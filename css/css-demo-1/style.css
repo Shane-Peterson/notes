@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+ul,
+ol {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+header {
+  background: grey;
+  color: red;
+}
+.nav {
+  float: right;
+  margin-right: 20px;
+}
+ul > li {
+  padding: 4px 0.5em;
+  line-height: 32px;
+  float: left;
+}
+.logo {
+  float: left;
+  margin-top: 7px;
+  margin-left: 20px;
+}
+.logo > img {
+  height: 26px;
+  vertical-align: middle;
+}
+
+.content {
+  outline: 1px solid red;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+.content > aside {
+  width: 200px;
+  height: 300px;
+  float: left;
+  background: #999;
+}
+
+.content > main {
+  width: 500px;
+  height: 300px;
+  float: left;
+  background: #ccc;
+}
+
+.content > .ad {
+  width: 100px;
+  height: 300px;
+  float: left;
+  background: #111;
+}
+
+.imageList {
+  outline: 1px solid purple;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.imageList > .x > .image {
+  border: 1px solid red;
+  width: 191px;
+  height: 191px;
+  background: #000;
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 12px;
+}
+
+.imageList > .x {
+  outline: 1px solid yellow;
+  margin-right: -12px;
+}
