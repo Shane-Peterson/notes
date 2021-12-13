@@ -35,7 +35,7 @@ if (condition) statement1 else statement2
 
 ## while 语句
 
-`while` 语句属于前测试循坏语句，也就是说，在循环体内的代码被执行之前，就会对出口条件求值。因此，循坏体内的代码有可能永远不会被执行。以下是 `while` 语句的语法：
+`while` 语句属于前测试循环语句，也就是说，在循环体内的代码被执行之前，就会对出口条件求值。因此，循环体内的代码有可能永远不会被执行。以下是 `while` 语句的语法：
 
 ```JavaScript
 while(expression) statement
@@ -43,7 +43,7 @@ while(expression) statement
 
 ## for 语句
 
-`for` 语句也是一种前测试循坏语句，但它具有在执行循坏之前初始化变量和定义循环后要执行的代码的能力。以下是 `for` 语句的语法：
+`for` 语句也是一种前测试循环语句，但它具有在执行循环之前初始化变量和定义循环后要执行的代码的能力。以下是 `for` 语句的语法：
 
 ```JavaScript
 for (initialization; expression; post-loop-expression) statement
@@ -61,7 +61,7 @@ label: statement
 
 ## break 和 continue 语句
 
-`break` 和 `continue` 语句用于在循环中精确的控制代码的执行。其中，`break` 语句会立即退出循环，强制继续执行循坏后面的语句。而 `continue` 语句虽然也是立即退出循环，但退出循坏后会从循坏的顶部继续执行。
+`break` 和 `continue` 语句用于在循环中精确的控制代码的执行。其中，`break` 语句会立即退出循环，强制继续执行循环后面的语句。而 `continue` 语句虽然也是立即退出循环，但退出循环后会从循环的顶部继续执行。
 
 `break` 和 `continue` 语句都可以与 `label` 语句联合使用，从而返回代码中特点的位置。这种联合使用的情况多发生在循环嵌套的情况下，比如：
 
@@ -70,11 +70,11 @@ let num = 0;
 
 outermost:
 for (let i=0; i < 10; i++) {
-	for (let j=0; j < 10; j++) {
-		if (i === 5 && j === 5) {
-    		break outermost;
-    	}
-    	num ++;
+    for (let j=0; j < 10; j++) {
+        if (i === 5 && j === 5) {
+            break outermost;
+        }
+        num ++;
   	}
 }
 
