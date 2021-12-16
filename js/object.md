@@ -72,7 +72,7 @@ Object.assign(obj, {age: 18, gender: 'man'})
 
 ## 检测一个属性是否存在于原型中
 
-通过同时使用 `hasOwnProperty()` 方法和 `in` 操作符，就可以确定该属性到底是存在与对象中，还是存在于原型中，如下所示。
+通过同时使用 `hasOwnProperty()` 方法和 `in` 操作符，就可以确定该属性到底是存在于对象中，还是存在于原型中，如下所示。
 
 ```JavaScript
 function hasPrototypeProperty(object, name) {
