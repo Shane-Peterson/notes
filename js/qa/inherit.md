@@ -10,25 +10,28 @@ JS 的继承可分为两种形式，第一种为ES5 写法基于原型链的继�
 
 ```jsx
 function inheritPrototype(subType, superType) {
-	let prototype = Object.create(superType.prototype); // 创建对象
-	prototype.constructor = subType; // 增强对象
-	subType.prototype = prototype; // 指定对象
+  let prototype = Object.create(superType.prototype); // 创建对象
+  prototype.constructor = subType; // 增强对象
+  subType.prototype = prototype; // 指定对象
 }
 
 function SuperType(name) {
-	this.name = name;
-	this.colors = ["red", "blue", "green"];
+  this.name = name;
+  this.colors = ["red", "blue", "green"];
 }
-SuperType.prototype.sayName = function() {
-	console.log(this.name);
+
+SuperType.prototype.sayName = function () {
+  console.log(this.name);
 };
+
 function SubType(name, age) {
-	SuperType.call(this, name);
-	this.age = age;
+  SuperType.call(this, name);
+  this.age = age;
 }
+
 inheritPrototype(SubType, SuperType);
-SubType.prototype.sayAge = function() {
-	console.log(this.age);
+SubType.prototype.sayAge = function () {
+  console.log(this.age);
 };
 ```
 
@@ -36,13 +39,14 @@ SubType.prototype.sayAge = function() {
 
 ```jsx
 class SuperType {
-	constructor(name) {
-		this.name = name;
-		this.colors = ["red", "blue", "green"];
-	}	
-	sayName() {
-		return this.name;
-	}
+  constructor(name) {
+    this.name = name;
+    this.colors = ["red", "blue", "green"];
+  }
+
+  sayName() {
+    return this.name;
+  }
 }
 
 class SubType extends SuperType {
@@ -50,6 +54,7 @@ class SubType extends SuperType {
     super(name); // 调用父类的 constructor(name)
     this.age = age;
   }
+
   sayAge() {
     return super.sayName() + ' ' + this.age;
     // 调用父类的 sayName()

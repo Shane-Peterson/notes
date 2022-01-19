@@ -17,7 +17,7 @@ JSONP 是 JSON with padding 的简写。
 假设有两个网站，A.com 和 B.com，当 B 网站想要访问 A 网站的数据时，就得执行以下步骤：
 
 1. A.com 将数据写到 /friends.js（可以是任意名字的 js 文件）
-2. B.com  用 script 标签引用 /friends.js
+2. B.com 用 script 标签引用 /friends.js
 3. /friends.js 执行 B.com 事先定义好的 window.xxx 函数，即执行 `window.xxx({firend:[...]})`
 4. 然后 B.com 就通过 window.xxx 获取到了数据，这里 window.xxx 就是一个回调函数。
 
@@ -69,9 +69,11 @@ JSONP 的缺点：因为它使用的是 script 标签，所有不如 AJAX 那样
 
 ## CORS 跨域
 
-CORS（Cross-Origin Resource Sharing，跨域资源共享）定义了在必须访问跨域资源时，浏览器与服务器应该如何沟通。CORS 背后的基本思想，就是使用自定义的 HTTP 头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。
+CORS（Cross-Origin Resource Sharing，跨域资源共享）定义了在必须访问跨域资源时，浏览器与服务器应该如何沟通。CORS 背后的基本思想，就是使用自定义的 HTTP
+头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。
 
-比如一个简单的使用 GET 或 POST 发送的请求，他没有自定义的头部，而主体内容是 text/plain。在发送该请求时，需要给它附加一个额外的 Origin 头部，其中包含请求页面的源信息（协议、域名和端口），以便服务器根据这个头部信息决定是否给予响应。下面是 Origin 头部的一个示例：
+比如一个简单的使用 GET 或 POST 发送的请求，他没有自定义的头部，而主体内容是 text/plain。在发送该请求时，需要给它附加一个额外的 Origin
+头部，其中包含请求页面的源信息（协议、域名和端口），以便服务器根据这个头部信息决定是否给予响应。下面是 Origin 头部的一个示例：
 
 ```text
 Origin: http://www.wheatfields.online

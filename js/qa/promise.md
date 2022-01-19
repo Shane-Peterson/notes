@@ -4,17 +4,18 @@
 
 ## Promise 的用途
 
-所谓 Promise，简单来说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）。有了 Promise 对象可以将异步操作以同步的流程表达出来，避免了层层嵌套的回调函数。此外，Promise 对象提供统一的接口，使得控制异步操作更加容易。
+所谓 Promise，简单来说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）。有了 Promise 对象可以将异步操作以同步的流程表达出来，避免了层层嵌套的回调函数。此外，Promise
+对象提供统一的接口，使得控制异步操作更加容易。
 
 ## 如何创建一个 new Promise
 
 ```jsx
-let promise = new Promise(function(resolve, reject){
+let promise = new Promise(function (resolve, reject) {
   // ... some code
 
-  if (/* 异步操作成功 */){
+  if (/* 异步操作成功 */) {
     resolve(value)
-  }else {
+  } else {
     reject(error)
   }
 });
@@ -22,7 +23,8 @@ let promise = new Promise(function(resolve, reject){
 
 Promise 构造函数接受一个函数作为参数，该函数的两个参数分别是 resolve 和 reject。它们是两个函数，由 JavaScript 引擎提供，不用自己部署。
 
-resolve 函数的作用是，将 Promise 对象的状态从“未完成”变为“成功”（即从 Pending 变为 Resolved），在异步操作成功时调用，并将异步操作的结果作为参数传递出去；reject 函数的作用是，将 Promise 对象的状态从“未完成”变为“失败”（即为 Pending 变为 Rejected），在异步操作失败时调用，并将异步操作报出的错误作为参数传递出去）。
+resolve 函数的作用是，将 Promise 对象的状态从“未完成”变为“成功”（即从 Pending 变为 Resolved），在异步操作成功时调用，并将异步操作的结果作为参数传递出去；reject 函数的作用是，将 Promise
+对象的状态从“未完成”变为“失败”（即为 Pending 变为 Rejected），在异步操作失败时调用，并将异步操作报出的错误作为参数传递出去）。
 
 ## 如何使用 Promise.prototype.then
 

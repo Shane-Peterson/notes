@@ -12,25 +12,30 @@
 
 ```javascript
 function CoolModule() {
-	var something = "cool";
-	var another = [1, 2, 3];
-	function doSomething() {
-		console.log(something);
-	}
-	function doAnother() {
-		console.log(another.join("!"))
-	}
-	return {
-		doSomething: doSomething,
-		doAnother: doAnother
-	};
+  var something = "cool";
+  var another = [1, 2, 3];
+
+  function doSomething() {
+    console.log(something);
+  }
+
+  function doAnother() {
+    console.log(another.join("!"))
+  }
+
+  return {
+    doSomething: doSomething,
+    doAnother: doAnother
+  };
 }
+
 var foo = CoolModule();
 foo.doSomething(); // cool
 foo.doAnother(); // 1 ! 2 ! 3
 ```
 
-闭包的形成和垃圾回收机制有关，一般来说，当函数执行完毕后， 局部活动对象就会被垃圾回收，内存中仅保存全局作用域，闭包的情况又有所不同。上面的代码中 CoolModule() 调用后会返回一个包含内部函数的对象，形成对内部函数的引用，导致局部活动对象无法被垃圾回收，闭包因此产生。
+闭包的形成和垃圾回收机制有关，一般来说，当函数执行完毕后， 局部活动对象就会被垃圾回收，内存中仅保存全局作用域，闭包的情况又有所不同。上面的代码中 CoolModule()
+调用后会返回一个包含内部函数的对象，形成对内部函数的引用，导致局部活动对象无法被垃圾回收，闭包因此产生。
 
 ```jsx
 foo = null // 解除对内部函数的引用，以便释放内存
@@ -44,13 +49,13 @@ foo = null // 解除对内部函数的引用，以便释放内存
 
 ```javascript
 function createFunctions() {
-	const result = new Array()
-	for(var i=0; i<10; i++){
-		result[i] = function(){
-			return i
-		}
-	}
-	return result
+  const result = new Array()
+  for (var i = 0; i < 10; i++) {
+    result[i] = function () {
+      return i
+    }
+  }
+  return result
 }
 
 createFunctions()[1]() // 10
