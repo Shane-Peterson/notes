@@ -14,27 +14,28 @@
 
 ```html
 <template>
-	<div class="app">
-		App.vue 我现在有 {{total}}
-	<hr/>
-	<Child :money="total" v-on:update:money="total = $event"/>
-	</div>
+  <div className="app">
+    App.vue 我现在有 {{ total }}
+    <hr/>
+    <Child :money="total" v-on:update:money="total = $event"/>
+  </div>
 </template>
 
 <script>
 import Child from "./Child.vue"
+
 export default {
-	data(){
-		return { total: 10000}
-	},
-	components: { Child }
+  data() {
+    return {total: 10000}
+  },
+  components: {Child}
 }
 </script>
 
 <style>
 .app {
-	border: 3px solid red;
-	padding: 10px;
+  border: 3px solid red;
+  padding: 10px;
 }
 </style>
 ```

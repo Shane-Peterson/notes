@@ -2,36 +2,36 @@
 
 ![response-principle](./images/response-principle.png)
 
-当你把一个普通的 JavaScript 对象传入 Vue 实例作为 data 选项，Vue 将遍历此对象所有的 property，并使用 Object.definedProperty 把这些 property 全部转为 getter/setter。整个过程大致如以下代码所示：
+当你把一个普通的 JavaScript 对象传入 Vue 实例作为 `data` 选项，Vue 将遍历此对象所有的 property，并使用 `Object.definedProperty` 把这些 property 全部转为 getter/setter。整个过程大致如以下代码所示：
 
 ```jsx
-let myData = {n:0}
-let vm = proxy({ data:myData }) 
+let myData = {n: 0}
+let vm = proxy({data: myData})
 
-function proxy({data}){
-	const obj = {}
-	for (let k in data){
-		let value = data[k]
-  		Object.defineProperty(data, k, {
-    	get(){
-      		return value
-    	},
-    	set(newValue){
-      		if(newValue<0)return
-      		value = newValue
-    	}
-  		})
-		Object.defineProperty(obj, k, {
-			get(){
-				return data[k]
-			},
-			set(value){
-				if(value<0)return
-				data[k] = value
-			}
-		})	
+function proxy({data}) {
+  const obj = {}
+  for (let k in data) {
+    let value = data[k]
+    Object.defineProperty(data, k, {
+      get() {
+        return value
+      },
+      set(newValue) {
+        if (newValue < 0) return
+        value = newValue
+      }
+    })
+    Object.defineProperty(obj, k, {
+      get() {
+        return data[k]
+      },
+      set(value) {
+        if (value < 0) return
+        data[k] = value
+      }
+    })
 
-	}
+  }
   return obj // obj 就是代理
 }
 
@@ -77,22 +77,22 @@ import Vue from 'vue/dist/vue.js'
 Vue.config.productionTip = false
 
 new Vue({
-	data: {
-		obj: {
-			a: 0 // obj.a 会被 Vue 监听 & 代理
-		}	
-	},
-	template: `
-		<div>
-			{{obj.b}}
-			<button @click="setB">set b</button>
-		</div>
-	`,
-	methods: {
-		setB() {
-			this.obj.b = 1 // 请问，页面中会显示 1 吗？
-		}
-	}
+  data: {
+    obj: {
+      a: 0 // obj.a 会被 Vue 监听 & 代理
+    }
+  },
+  template: `
+    <div>
+    {{ obj.b }}
+    <button @click="setB">set b</button>
+    </div>
+  `,
+  methods: {
+    setB() {
+      this.obj.b = 1 // 请问，页面中会显示 1 吗？
+    }
+  }
 }).$mount("#app")
 ```
 
@@ -130,8 +130,8 @@ new Vue({
   },
   template: `
     <div>
-      {{array}}
-      <button @click="setD">set d</button>
+    {{ array }}
+    <button @click="setD">set d</button>
     </div>
   `,
   methods: {
@@ -152,21 +152,21 @@ new Vue({
 怎么篡改的？
 
 ```jsx
-class VueArray extends Array{
-	push(...args){
-		const oldLength = this.length // this 就是当前数组
-		super.push(...args)
-		console.log('你 push 了')
-		for (let i = oldLength; i < this.length; i++){
-			Vue.set(this, i, this[i])
-			// 将每个新增的 key 都告诉 Vue
-		}
-	}
+class VueArray extends Array {
+  push(...args) {
+    const oldLength = this.length // this 就是当前数组
+    super.push(...args)
+    console.log('你 push 了')
+    for (let i = oldLength; i < this.length; i++) {
+      Vue.set(this, i, this[i])
+      // 将每个新增的 key 都告诉 Vue
+    }
+  }
 }
 ```
 
 <aside>
-⚠️ 这不代表 Vue 的真实实现，仅供参考。
+⚠️ 这不代表 Vue 的真实实现。
 
 </aside>
 
