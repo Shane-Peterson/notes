@@ -15,4 +15,4 @@
 11. [mini-program](mini-program)
 12. [Algorithm](algorithm)
 13. [Performance optimization](performance-optimization)
-14. [DOM diff](DOM-diff)
+14. [DOM](DOM)
