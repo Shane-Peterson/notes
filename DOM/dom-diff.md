@@ -64,13 +64,13 @@ patches 就是要运行的 DOM 操作，可能长这样：
 
 ```jsx
 [
-	{type: 'INSERT', vNode: ... },
-	{type: 'TEXT', vNode: ... },
-	{type: 'PROPS', propsPatch: [...]}
+  {type: 'INSERT', vNode: ... },
+  {type: 'TEXT', vNode: ... },
+  {type: 'PROPS', propsPatch: [...]}
 ]
 ```
 
-## DOM diff 可能的大概逻辑
+## DOM diff 的大概逻辑
 
 **Tree diff**
 
